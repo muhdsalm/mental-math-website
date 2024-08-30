@@ -34,6 +34,7 @@ func _ready() -> void:
 			$Numpads.visible = true
 		else:
 			$Numpads2.visible = true
+			$"Math Buttons".scale = Vector2(2, 2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
