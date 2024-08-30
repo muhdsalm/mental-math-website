@@ -109,7 +109,8 @@ func apply_vars_to_ui():
 	if operation == "division":
 		$Question/Label.text = str(num1) + " ÷ " + str(num2) + " = "
 	$Question/QuestionLineEdit.text = ""
-	$Question/QuestionLineEdit.grab_focus()
+	if !is_ios_or_android:
+		$Question/QuestionLineEdit.grab_focus()
 
 
 func _on_correct_answer_delay_timeout() -> void:
