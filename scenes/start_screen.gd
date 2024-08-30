@@ -8,7 +8,8 @@ var increase = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if OS.get_model_name() != "GenericDevice":
+	var is_ios_or_android = JavaScriptBridge.eval("/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)", true)
+	if is_ios_or_android:
 		should_continue = false
 		$CotinueText/Label.text = "Unsupported device. This website only runs on desktops. "
 		$MobileAppText.visible = true
