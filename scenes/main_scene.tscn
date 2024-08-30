@@ -202,7 +202,7 @@ theme_override_font_sizes/font_size = 40
 text = "1"
 
 [node name="Math Buttons" type="Node2D" parent="."]
-position = Vector2(67, 324)
+position = Vector2(96, 324)
 metadata/_edit_group_ = true
 
 [node name="Addition Button" type="Node2D" parent="Math Buttons"]
@@ -699,7 +699,8 @@ stream = ExtResource("4_30ucq")
 
 [node name="Numpads2" type="Node2D" parent="."]
 visible = false
-position = Vector2(594, 746)
+position = Vector2(594, 946)
+scale = Vector2(2.5, 2.5)
 script = ExtResource("24_2lfe6")
 metadata/_edit_group_ = true
 

@@ -18,7 +18,7 @@ var startup_count = 3
 
 @export var muted = false
 
-@export var is_ios_or_android: bool
+var is_ios_or_android
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,8 +30,10 @@ func _ready() -> void:
 		
 	is_ios_or_android = JavaScriptBridge.eval("/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)", true)
 	if is_ios_or_android:
-		$Numpads.visible = true
-		$Numpads2.visible = true
+		if get_viewport_rect().size.x > get_viewport_rect().size.y:
+			$Numpads.visible = true
+		else:
+			$Numpads2.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,7 +41,7 @@ func _process(delta: float) -> void:
 	$Question.position.x = get_viewport_rect().size.x / 2
 	$"Question Marker2".position.x = get_viewport_rect().size.x / 2
 	$QuestionStopwatch.position.x = get_viewport_rect().size.x / 2
-	$"Math Buttons".position.x = get_viewport_rect().size.x * 0.058159722
+	$"Math Buttons".position.x = get_viewport_rect().size.x * 0.083333333
 	$"Math Buttons".position.y = get_viewport_rect().size.y / 2
 	$AudioButton.position.x = get_viewport_rect().size.x * 0.953993056
 	$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x * 0.842013889
