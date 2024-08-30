@@ -11,8 +11,8 @@ func _ready() -> void:
 	var is_ios_or_android = JavaScriptBridge.eval("/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)", true)
 	if is_ios_or_android:
 		should_continue = false
-		$CotinueText/Label.text = "Unsupported device. This website only runs on desktops. "
-		$MobileAppText.visible = true
+		$CotinueText/Label.visible = false
+		$StartButton.visible = true
 	pass # Replace with function body.
 
 
@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 	$CotinueText.position.x = get_viewport_rect().size.x / 2
 	$AudioButton.position.x = get_viewport_rect().size.x * 0.953993056
 	$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x * 0.842013889
+	$StartButton.position.x = get_viewport_rect().size.x / 2
 	if !should_continue:
 		$MobileAppText.position.x = get_viewport_rect().size.x / 2
 	if !increase and should_continue:
@@ -48,3 +49,11 @@ func _on_button_pressed() -> void:
 		$AudioButton/CenterContainer/enabled.visible = true
 		$AudioButton/CenterContainer/disabled.visible = false
 		$pop.play()
+
+
+func _on_button_button_up() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
+
+
+func _on_button_button_down() -> void:
+	$StartButton.scale = Vector2(1.1, 1.1)

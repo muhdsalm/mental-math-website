@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm8sg1t4b57sm"]
+[gd_scene load_steps=9 format=3 uid="uid://bm8sg1t4b57sm"]
 
 [ext_resource type="Texture2D" uid="uid://bel78ywodhxq8" path="res://assets/background.svg" id="1_06uis"]
 [ext_resource type="Script" path="res://scenes/start_screen.gd" id="1_lleln"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bwulpeswno40f" path="res://assets/audio_button/disabled.png" id="5_snmbd"]
 [ext_resource type="AudioStream" uid="uid://cw4usrghffspb" path="res://assets/sound effects/bubble_pop.mp3" id="6_0ruek"]
 [ext_resource type="FontFile" uid="uid://bbg3epqes1rug" path="res://assets/Inter-VariableFont_slnt,wght.ttf" id="7_l0eak"]
+[ext_resource type="Texture2D" uid="uid://vwiheef4fy47" path="res://assets/Start Button.png" id="8_kpsy0"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -163,4 +164,27 @@ text = "This Game is Open Source Software. Github."
 horizontal_alignment = 2
 vertical_alignment = 2
 
+[node name="StartButton" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, 384)
+metadata/_edit_group_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="StartButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StartButton/CenterContainer"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_kpsy0")
+
+[node name="Button" type="Button" parent="StartButton"]
+offset_left = -114.0
+offset_top = -40.0
+offset_right = 114.0
+offset_bottom = 39.0
+theme = ExtResource("2_edg68")
+
 [connection signal="pressed" from="AudioButton/Button" to="." method="_on_button_pressed"]
+[connection signal="button_down" from="StartButton/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="StartButton/Button" to="." method="_on_button_button_up"]

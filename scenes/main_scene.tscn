@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cdft7sqdsa1f7"]
+[gd_scene load_steps=54 format=3 uid="uid://cdft7sqdsa1f7"]
 
 [ext_resource type="Script" path="res://scenes/main_scene.gd" id="1_7ydfn"]
 [ext_resource type="Texture2D" uid="uid://bel78ywodhxq8" path="res://assets/background.svg" id="2_5qrx8"]
@@ -23,6 +23,31 @@
 [ext_resource type="Texture2D" uid="uid://bemfmh1lx30oy" path="res://assets/audio_button/enabled.png" id="21_qhcgm"]
 [ext_resource type="Texture2D" uid="uid://bwulpeswno40f" path="res://assets/audio_button/disabled.png" id="22_nf10r"]
 [ext_resource type="FontFile" uid="uid://bbg3epqes1rug" path="res://assets/Inter-VariableFont_slnt,wght.ttf" id="23_dbnue"]
+[ext_resource type="Script" path="res://scenes/numpads.gd" id="24_2lfe6"]
+[ext_resource type="Texture2D" uid="uid://cbrfmoa32e0vq" path="res://assets/keypad_buttons/numpad_1.png" id="24_7iypk"]
+[ext_resource type="Texture2D" uid="uid://ddltunmd02ges" path="res://assets/keypad_buttons/numpad_2.png" id="25_5v3a8"]
+[ext_resource type="Script" path="res://scenes/numpad_1.gd" id="25_vfqju"]
+[ext_resource type="Texture2D" uid="uid://bjgeg0xv4dutg" path="res://assets/keypad_buttons/numpad_3.png" id="26_ggimk"]
+[ext_resource type="Texture2D" uid="uid://dfbaq0awbmkcw" path="res://assets/keypad_buttons/numpad_4.png" id="27_ku7g2"]
+[ext_resource type="Script" path="res://scenes/numpad_2.gd" id="27_oeg4w"]
+[ext_resource type="Texture2D" uid="uid://bgv038g2yx5v0" path="res://assets/keypad_buttons/numpad_5.png" id="28_be7rd"]
+[ext_resource type="Script" path="res://scenes/numpad_3.gd" id="29_3qh6p"]
+[ext_resource type="Texture2D" uid="uid://7ndjw5o75k7d" path="res://assets/keypad_buttons/numpad_6.png" id="29_wbq62"]
+[ext_resource type="Texture2D" uid="uid://bj2sx4esbbsqw" path="res://assets/keypad_buttons/numpad_7.png" id="30_ydeu1"]
+[ext_resource type="Texture2D" uid="uid://ddvik88p2b315" path="res://assets/keypad_buttons/numpad_8.png" id="31_2f62o"]
+[ext_resource type="Script" path="res://scenes/numpad_4.gd" id="31_onfrn"]
+[ext_resource type="Texture2D" uid="uid://cc6exuj873waw" path="res://assets/keypad_buttons/numpad_9.png" id="32_vhkf1"]
+[ext_resource type="Script" path="res://scenes/numpad_5.gd" id="33_333oa"]
+[ext_resource type="Script" path="res://scenes/numpad_6.gd" id="35_2ecpg"]
+[ext_resource type="Texture2D" uid="uid://dufxu87e0hb7x" path="res://assets/keypad_buttons/numpad_0.png" id="35_eaiyb"]
+[ext_resource type="Texture2D" uid="uid://e4o84qkcreua" path="res://assets/keypad_buttons/numpad_backspace.png" id="36_puess"]
+[ext_resource type="Script" path="res://scenes/numpad_7.gd" id="37_byisa"]
+[ext_resource type="Script" path="res://scenes/numpad_8.gd" id="39_kyexy"]
+[ext_resource type="Script" path="res://scenes/numpad_9.gd" id="41_l7oa6"]
+[ext_resource type="Script" path="res://scenes/numpad_0.gd" id="43_r6345"]
+[ext_resource type="Script" path="res://scenes/numpad_backspace.gd" id="45_j4mna"]
+[ext_resource type="Script" path="res://scenes/numpad_minus.gd" id="47_c0bfq"]
+[ext_resource type="Texture2D" uid="uid://1gvtqe2cogjj" path="res://assets/keypad_buttons/numpad_minus.png" id="48_urymk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6im1y"]
 
@@ -69,6 +94,16 @@ position = Vector2(576, 882)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_5qrx8")
 
+[node name="Background10" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(584, 1438)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5qrx8")
+
+[node name="Background11" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(584, 1994)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5qrx8")
+
 [node name="Background8" type="Sprite2D" parent="Backgrounds"]
 position = Vector2(1614, 882)
 scale = Vector2(0.6, 0.6)
@@ -110,7 +145,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="LineEdit" type="LineEdit" parent="Question"]
+[node name="QuestionLineEdit" type="LineEdit" parent="Question"]
+unique_name_in_owner = true
 offset_left = 181.0
 offset_top = -72.0
 offset_right = 577.0
@@ -120,7 +156,8 @@ theme_override_colors/font_color = Color(0.0235294, 0.588235, 0.227451, 1)
 theme_override_font_sizes/font_size = 120
 metadata/_edit_use_anchors_ = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Question"]
+[node name="TypingAudioStreamPlayer" type="AudioStreamPlayer" parent="Question"]
+unique_name_in_owner = true
 stream = ExtResource("4_u4i08")
 
 [node name="TimerLabel" type="Label" parent="Question"]
@@ -355,7 +392,617 @@ text = "This Game is Open Source Software. Github."
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[connection signal="text_changed" from="Question/LineEdit" to="." method="_on_line_edit_text_changed"]
+[node name="Numpads" type="Node2D" parent="."]
+visible = false
+position = Vector2(1032, 437)
+script = ExtResource("24_2lfe6")
+metadata/_edit_group_ = true
+
+[node name="Numpad 1" type="Node2D" parent="Numpads"]
+position = Vector2(-70, -70)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("25_vfqju")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads/Numpad 1"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads/Numpad 1/CenterContainer2"]
+texture = ExtResource("24_7iypk")
+
+[node name="Button" type="Button" parent="Numpads/Numpad 1"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads/Numpad 1"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 2" type="Node2D" parent="Numpads"]
+position = Vector2(0, -70)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("27_oeg4w")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads/Numpad 2"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads/Numpad 2/CenterContainer2"]
+texture = ExtResource("25_5v3a8")
+
+[node name="Button" type="Button" parent="Numpads/Numpad 2"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads/Numpad 2"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 3" type="Node2D" parent="Numpads"]
+position = Vector2(70, -70)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("29_3qh6p")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads/Numpad 3"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads/Numpad 3/CenterContainer2"]
+texture = ExtResource("26_ggimk")
+
+[node name="Button" type="Button" parent="Numpads/Numpad 3"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads/Numpad 3"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 4" type="Node2D" parent="Numpads"]
+position = Vector2(-70, 0)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("31_onfrn")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads/Numpad 4"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads/Numpad 4/CenterContainer2"]
+texture = ExtResource("27_ku7g2")
+
+[node name="Button" type="Button" parent="Numpads/Numpad 4"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads/Numpad 4"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 5" type="Node2D" parent="Numpads"]
+scale = Vector2(0.64, 0.64)
+script = ExtResource("33_333oa")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads/Numpad 5"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads/Numpad 5/CenterContainer2"]
+texture = ExtResource("28_be7rd")
+
+[node name="Button" type="Button" parent="Numpads/Numpad 5"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads/Numpad 5"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 6" type="Node2D" parent="Numpads"]
+position = Vector2(70, 0)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("35_2ecpg")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads/Numpad 6"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads/Numpad 6/CenterContainer2"]
+texture = ExtResource("29_wbq62")
+
+[node name="Button" type="Button" parent="Numpads/Numpad 6"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads/Numpad 6"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 7" type="Node2D" parent="Numpads"]
+position = Vector2(-70, 70)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("37_byisa")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads/Numpad 7"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads/Numpad 7/CenterContainer2"]
+texture = ExtResource("30_ydeu1")
+
+[node name="Button" type="Button" parent="Numpads/Numpad 7"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads/Numpad 7"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 8" type="Node2D" parent="Numpads"]
+position = Vector2(0, 70)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("39_kyexy")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads/Numpad 8"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads/Numpad 8/CenterContainer2"]
+texture = ExtResource("31_2f62o")
+
+[node name="Button" type="Button" parent="Numpads/Numpad 8"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads/Numpad 8"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 9" type="Node2D" parent="Numpads"]
+position = Vector2(70, 70)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("41_l7oa6")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads/Numpad 9"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads/Numpad 9/CenterContainer2"]
+texture = ExtResource("32_vhkf1")
+
+[node name="Button" type="Button" parent="Numpads/Numpad 9"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads/Numpad 9"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 0" type="Node2D" parent="Numpads"]
+position = Vector2(0, 140)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("43_r6345")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads/Numpad 0"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads/Numpad 0/CenterContainer2"]
+texture = ExtResource("35_eaiyb")
+
+[node name="Button" type="Button" parent="Numpads/Numpad 0"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads/Numpad 0"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad Backspace" type="Node2D" parent="Numpads"]
+position = Vector2(70, 140)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("45_j4mna")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads/Numpad Backspace"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads/Numpad Backspace/CenterContainer2"]
+texture = ExtResource("36_puess")
+
+[node name="Button" type="Button" parent="Numpads/Numpad Backspace"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads/Numpad Backspace"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad Minus" type="Node2D" parent="Numpads"]
+position = Vector2(-70, 140)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("47_c0bfq")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads/Numpad Minus"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads/Numpad Minus/CenterContainer2"]
+texture = ExtResource("48_urymk")
+
+[node name="Button" type="Button" parent="Numpads/Numpad Minus"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads/Numpad Minus"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpads2" type="Node2D" parent="."]
+visible = false
+position = Vector2(594, 746)
+script = ExtResource("24_2lfe6")
+metadata/_edit_group_ = true
+
+[node name="Numpad 1" type="Node2D" parent="Numpads2"]
+position = Vector2(-70, -70)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("25_vfqju")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads2/Numpad 1"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads2/Numpad 1/CenterContainer2"]
+texture = ExtResource("24_7iypk")
+
+[node name="Button" type="Button" parent="Numpads2/Numpad 1"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad 1"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 2" type="Node2D" parent="Numpads2"]
+position = Vector2(0, -70)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("27_oeg4w")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads2/Numpad 2"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads2/Numpad 2/CenterContainer2"]
+texture = ExtResource("25_5v3a8")
+
+[node name="Button" type="Button" parent="Numpads2/Numpad 2"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad 2"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 3" type="Node2D" parent="Numpads2"]
+position = Vector2(70, -70)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("29_3qh6p")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads2/Numpad 3"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads2/Numpad 3/CenterContainer2"]
+texture = ExtResource("26_ggimk")
+
+[node name="Button" type="Button" parent="Numpads2/Numpad 3"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad 3"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 4" type="Node2D" parent="Numpads2"]
+position = Vector2(-70, 0)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("31_onfrn")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads2/Numpad 4"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads2/Numpad 4/CenterContainer2"]
+texture = ExtResource("27_ku7g2")
+
+[node name="Button" type="Button" parent="Numpads2/Numpad 4"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad 4"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 5" type="Node2D" parent="Numpads2"]
+scale = Vector2(0.64, 0.64)
+script = ExtResource("33_333oa")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads2/Numpad 5"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads2/Numpad 5/CenterContainer2"]
+texture = ExtResource("28_be7rd")
+
+[node name="Button" type="Button" parent="Numpads2/Numpad 5"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad 5"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 6" type="Node2D" parent="Numpads2"]
+position = Vector2(70, 0)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("35_2ecpg")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads2/Numpad 6"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads2/Numpad 6/CenterContainer2"]
+texture = ExtResource("29_wbq62")
+
+[node name="Button" type="Button" parent="Numpads2/Numpad 6"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad 6"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 7" type="Node2D" parent="Numpads2"]
+position = Vector2(-70, 70)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("37_byisa")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads2/Numpad 7"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads2/Numpad 7/CenterContainer2"]
+texture = ExtResource("30_ydeu1")
+
+[node name="Button" type="Button" parent="Numpads2/Numpad 7"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad 7"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 8" type="Node2D" parent="Numpads2"]
+position = Vector2(0, 70)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("39_kyexy")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads2/Numpad 8"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads2/Numpad 8/CenterContainer2"]
+texture = ExtResource("31_2f62o")
+
+[node name="Button" type="Button" parent="Numpads2/Numpad 8"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad 8"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 9" type="Node2D" parent="Numpads2"]
+position = Vector2(70, 70)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("41_l7oa6")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads2/Numpad 9"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads2/Numpad 9/CenterContainer2"]
+texture = ExtResource("32_vhkf1")
+
+[node name="Button" type="Button" parent="Numpads2/Numpad 9"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad 9"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad 0" type="Node2D" parent="Numpads2"]
+position = Vector2(0, 140)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("43_r6345")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads2/Numpad 0"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads2/Numpad 0/CenterContainer2"]
+texture = ExtResource("35_eaiyb")
+
+[node name="Button" type="Button" parent="Numpads2/Numpad 0"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad 0"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad Backspace" type="Node2D" parent="Numpads2"]
+position = Vector2(70, 140)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("45_j4mna")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads2/Numpad Backspace"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads2/Numpad Backspace/CenterContainer2"]
+texture = ExtResource("36_puess")
+
+[node name="Button" type="Button" parent="Numpads2/Numpad Backspace"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad Backspace"]
+stream = ExtResource("4_30ucq")
+
+[node name="Numpad Minus" type="Node2D" parent="Numpads2"]
+position = Vector2(-70, 140)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("47_c0bfq")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Numpads2/Numpad Minus"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="Numpads2/Numpad Minus/CenterContainer2"]
+texture = ExtResource("48_urymk")
+
+[node name="Button" type="Button" parent="Numpads2/Numpad Minus"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad Minus"]
+stream = ExtResource("4_30ucq")
+
+[connection signal="text_changed" from="Question/QuestionLineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="button_down" from="Math Buttons/Addition Button/Button" to="Math Buttons/Addition Button" method="_on_button_button_down"]
 [connection signal="button_up" from="Math Buttons/Addition Button/Button" to="Math Buttons/Addition Button" method="_on_button_button_up"]
 [connection signal="mouse_entered" from="Math Buttons/Addition Button/Button" to="Math Buttons/Addition Button" method="_on_button_mouse_entered"]
@@ -375,3 +1022,95 @@ vertical_alignment = 2
 [connection signal="timeout" from="Correct Answer Delay" to="." method="_on_correct_answer_delay_timeout"]
 [connection signal="timeout" from="StartupTimer" to="." method="_on_startup_timer_timeout"]
 [connection signal="pressed" from="AudioButton/Button" to="." method="_on_button_pressed"]
+[connection signal="button_down" from="Numpads/Numpad 1/Button" to="Numpads/Numpad 1" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads/Numpad 1/Button" to="Numpads/Numpad 1" method="_on_button_button_up"]
+[connection signal="button_down" from="Numpads/Numpad 2/Button" to="Numpads/Numpad 2" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads/Numpad 2/Button" to="Numpads/Numpad 2" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads/Numpad 2/Button" to="Numpads/Numpad 2" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads/Numpad 2/Button" to="Numpads/Numpad 2" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads/Numpad 3/Button" to="Numpads/Numpad 3" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads/Numpad 3/Button" to="Numpads/Numpad 3" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads/Numpad 3/Button" to="Numpads/Numpad 3" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads/Numpad 3/Button" to="Numpads/Numpad 3" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads/Numpad 4/Button" to="Numpads/Numpad 4" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads/Numpad 4/Button" to="Numpads/Numpad 4" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads/Numpad 4/Button" to="Numpads/Numpad 4" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads/Numpad 4/Button" to="Numpads/Numpad 4" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads/Numpad 5/Button" to="Numpads/Numpad 5" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads/Numpad 5/Button" to="Numpads/Numpad 5" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads/Numpad 5/Button" to="Numpads/Numpad 5" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads/Numpad 5/Button" to="Numpads/Numpad 5" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads/Numpad 6/Button" to="Numpads/Numpad 6" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads/Numpad 6/Button" to="Numpads/Numpad 6" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads/Numpad 6/Button" to="Numpads/Numpad 6" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads/Numpad 6/Button" to="Numpads/Numpad 6" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads/Numpad 7/Button" to="Numpads/Numpad 7" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads/Numpad 7/Button" to="Numpads/Numpad 7" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads/Numpad 7/Button" to="Numpads/Numpad 7" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads/Numpad 7/Button" to="Numpads/Numpad 7" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads/Numpad 8/Button" to="Numpads/Numpad 8" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads/Numpad 8/Button" to="Numpads/Numpad 8" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads/Numpad 8/Button" to="Numpads/Numpad 8" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads/Numpad 8/Button" to="Numpads/Numpad 8" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads/Numpad 9/Button" to="Numpads/Numpad 9" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads/Numpad 9/Button" to="Numpads/Numpad 9" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads/Numpad 9/Button" to="Numpads/Numpad 9" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads/Numpad 9/Button" to="Numpads/Numpad 9" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads/Numpad 0/Button" to="Numpads/Numpad 0" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads/Numpad 0/Button" to="Numpads/Numpad 0" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads/Numpad 0/Button" to="Numpads/Numpad 0" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads/Numpad 0/Button" to="Numpads/Numpad 0" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads/Numpad Backspace/Button" to="Numpads/Numpad Backspace" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads/Numpad Backspace/Button" to="Numpads/Numpad Backspace" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads/Numpad Backspace/Button" to="Numpads/Numpad Backspace" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads/Numpad Backspace/Button" to="Numpads/Numpad Backspace" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads/Numpad Minus/Button" to="Numpads/Numpad Minus" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads/Numpad Minus/Button" to="Numpads/Numpad Minus" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads/Numpad Minus/Button" to="Numpads/Numpad Minus" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads/Numpad Minus/Button" to="Numpads/Numpad Minus" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads2/Numpad 1/Button" to="Numpads2/Numpad 1" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads2/Numpad 1/Button" to="Numpads2/Numpad 1" method="_on_button_button_up"]
+[connection signal="button_down" from="Numpads2/Numpad 2/Button" to="Numpads2/Numpad 2" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads2/Numpad 2/Button" to="Numpads2/Numpad 2" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads2/Numpad 2/Button" to="Numpads2/Numpad 2" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads2/Numpad 2/Button" to="Numpads2/Numpad 2" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads2/Numpad 3/Button" to="Numpads2/Numpad 3" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads2/Numpad 3/Button" to="Numpads2/Numpad 3" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads2/Numpad 3/Button" to="Numpads2/Numpad 3" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads2/Numpad 3/Button" to="Numpads2/Numpad 3" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads2/Numpad 4/Button" to="Numpads2/Numpad 4" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads2/Numpad 4/Button" to="Numpads2/Numpad 4" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads2/Numpad 4/Button" to="Numpads2/Numpad 4" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads2/Numpad 4/Button" to="Numpads2/Numpad 4" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads2/Numpad 5/Button" to="Numpads2/Numpad 5" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads2/Numpad 5/Button" to="Numpads2/Numpad 5" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads2/Numpad 5/Button" to="Numpads2/Numpad 5" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads2/Numpad 5/Button" to="Numpads2/Numpad 5" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads2/Numpad 6/Button" to="Numpads2/Numpad 6" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads2/Numpad 6/Button" to="Numpads2/Numpad 6" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads2/Numpad 6/Button" to="Numpads2/Numpad 6" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads2/Numpad 6/Button" to="Numpads2/Numpad 6" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads2/Numpad 7/Button" to="Numpads2/Numpad 7" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads2/Numpad 7/Button" to="Numpads2/Numpad 7" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads2/Numpad 7/Button" to="Numpads2/Numpad 7" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads2/Numpad 7/Button" to="Numpads2/Numpad 7" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads2/Numpad 8/Button" to="Numpads2/Numpad 8" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads2/Numpad 8/Button" to="Numpads2/Numpad 8" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads2/Numpad 8/Button" to="Numpads2/Numpad 8" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads2/Numpad 8/Button" to="Numpads2/Numpad 8" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads2/Numpad 9/Button" to="Numpads2/Numpad 9" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads2/Numpad 9/Button" to="Numpads2/Numpad 9" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads2/Numpad 9/Button" to="Numpads2/Numpad 9" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads2/Numpad 9/Button" to="Numpads2/Numpad 9" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads2/Numpad 0/Button" to="Numpads2/Numpad 0" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads2/Numpad 0/Button" to="Numpads2/Numpad 0" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads2/Numpad 0/Button" to="Numpads2/Numpad 0" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads2/Numpad 0/Button" to="Numpads2/Numpad 0" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads2/Numpad Backspace/Button" to="Numpads2/Numpad Backspace" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads2/Numpad Backspace/Button" to="Numpads2/Numpad Backspace" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads2/Numpad Backspace/Button" to="Numpads2/Numpad Backspace" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads2/Numpad Backspace/Button" to="Numpads2/Numpad Backspace" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Numpads2/Numpad Minus/Button" to="Numpads2/Numpad Minus" method="_on_button_button_down"]
+[connection signal="button_up" from="Numpads2/Numpad Minus/Button" to="Numpads2/Numpad Minus" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Numpads2/Numpad Minus/Button" to="Numpads2/Numpad Minus" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Numpads2/Numpad Minus/Button" to="Numpads2/Numpad Minus" method="_on_button_mouse_exited"]

@@ -18,6 +18,8 @@ var startup_count = 3
 
 @export var muted = false
 
+@export var is_ios_or_android: bool
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	muted = Globals.muted
@@ -25,6 +27,11 @@ func _ready() -> void:
 	$QuestionStopwatch/Label.text = ""
 	if !muted:
 		$"Startup Beep".play()
+		
+	is_ios_or_android = JavaScriptBridge.eval("/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)", true)
+	if is_ios_or_android:
+		$Numpads.visible = true
+		$Numpads2.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,24 +40,25 @@ func _process(delta: float) -> void:
 	$"Question Marker2".position.x = get_viewport_rect().size.x / 2
 	$QuestionStopwatch.position.x = get_viewport_rect().size.x / 2
 	$"Math Buttons".position.x = get_viewport_rect().size.x * 0.058159722
+	$"Math Buttons".position.y = get_viewport_rect().size.y / 2
 	$AudioButton.position.x = get_viewport_rect().size.x * 0.953993056
 	$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x * 0.842013889
+	$Numpads.position.x = get_viewport_rect().size.x * 0.895833333
+	$Numpads2.position.x = get_viewport_rect().size.x / 2
 	
 	if update_number:
 		$QuestionStopwatch/Label.text = str("%.2f" % ((Time.get_ticks_msec() - start_of_puzzle_number) / 1000.0))
-	elif $Question/LineEdit.text != frozen_answer:
-		$Question/LineEdit.text = frozen_answer
-		$Question/LineEdit.add_theme_color_override("font_color", Color.from_string("06963aff", Color(1, 1, 1)))
+	elif $Question/QuestionLineEdit.text != frozen_answer:
+		$Question/QuestionLineEdit.text = frozen_answer
+		$Question/QuestionLineEdit.add_theme_color_override("font_color", Color.from_string("06963aff", Color(1, 1, 1)))
 		
 
-
-func _on_line_edit_text_changed(new_text: String) -> void:
-	
+func line_edit_changed_function(new_text: String):
 	if update_number and !muted:
-		$Question/AudioStreamPlayer.play()
+		$Question/TypingAudioStreamPlayer.play()
 	
 	if new_text == str(sum):
-		$Question/LineEdit.add_theme_color_override("font_color", Color.from_string("06963aff", Color(1, 1, 1)))
+		$Question/QuestionLineEdit.add_theme_color_override("font_color", Color.from_string("06963aff", Color(1, 1, 1)))
 		update_number = false
 		frozen_answer = new_text
 		$"Correct Answer Delay".start()
@@ -58,7 +66,10 @@ func _on_line_edit_text_changed(new_text: String) -> void:
 		if !muted:
 			$CorrectAnswerChime.play()
 	else:
-		$Question/LineEdit.add_theme_color_override("font_color", Color.from_string("f6145eff", Color(1, 1, 1)))
+		$Question/QuestionLineEdit.add_theme_color_override("font_color", Color.from_string("f6145eff", Color(1, 1, 1)))
+
+func _on_line_edit_text_changed(new_text: String) -> void:
+	line_edit_changed_function(new_text)
 
 func get_operation_from_number(number: int, operation_array=[["addition", addition], ["subtraction", subtraction], ["multiplication", multiplication], ["division", division]]):
 	if operation_array[number][1]:
@@ -69,19 +80,19 @@ func get_operation_from_number(number: int, operation_array=[["addition", additi
 
 func get_random_number_and_perform_operation():
 	if operation == "addition":
-		num1 = randi_range(0, 100)
-		num2 = randi_range(0, 100)
+		num1 = randi_range(1, 100)
+		num2 = randi_range(1, 100)
 		sum = num1 + num2
 	if operation == "subtraction":
-		num1 = randi_range(0, 100)
-		num2 = randi_range(0, 100)
+		num1 = randi_range(1, 100)
+		num2 = randi_range(1, 100)
 		sum = num1 - num2
 	if operation == "multiplication":
-		num1 = randi_range(0, 20)
-		num2 = randi_range(0, 20)
+		num1 = randi_range(2, 20)
+		num2 = randi_range(2, 20)
 		sum = num1 * num2
 	if operation == "division":
-		num1 = randi_range(0, 1000)
+		num1 = randi_range(1, 100)
 		num2 = randi_range(1, 10)
 		sum = int(num1 / num2)
 
@@ -94,8 +105,8 @@ func apply_vars_to_ui():
 		$Question/Label.text = str(num1) + " × " + str(num2) + " = "
 	if operation == "division":
 		$Question/Label.text = str(num1) + " ÷ " + str(num2) + " = "
-	$Question/LineEdit.text = ""
-	$Question/LineEdit.grab_focus()
+	$Question/QuestionLineEdit.text = ""
+	$Question/QuestionLineEdit.grab_focus()
 
 
 func _on_correct_answer_delay_timeout() -> void:
