@@ -339,7 +339,7 @@ offset_left = -161.0
 offset_top = -8.0
 offset_right = 158.0
 offset_bottom = 8.0
-uri = "github.com/muhdsalm/mental-math-website"
+uri = "https://github.com/muhdsalm/mental-math-website"
 
 [node name="CenterContainer" type="CenterContainer" parent="OpenSourceDisclaimer"]
 offset_right = 40.0
