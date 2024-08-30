@@ -185,6 +185,16 @@ offset_right = 114.0
 offset_bottom = 39.0
 theme = ExtResource("2_edg68")
 
+[node name="Background10" type="Sprite2D" parent="."]
+position = Vector2(584, 1438)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_06uis")
+
+[node name="Background11" type="Sprite2D" parent="."]
+position = Vector2(584, 1994)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_06uis")
+
 [connection signal="pressed" from="AudioButton/Button" to="." method="_on_button_pressed"]
 [connection signal="button_down" from="StartButton/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="StartButton/Button" to="." method="_on_button_button_up"]
