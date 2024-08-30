@@ -1,0 +1,370 @@
+[gd_scene load_steps=28 format=3 uid="uid://cdft7sqdsa1f7"]
+
+[ext_resource type="Script" path="res://scenes/main_scene.gd" id="1_7ydfn"]
+[ext_resource type="Texture2D" uid="uid://bel78ywodhxq8" path="res://assets/background.svg" id="2_5qrx8"]
+[ext_resource type="Theme" uid="uid://dj8bwgitxx4xk" path="res://game_theme.tres" id="3_kyuh8"]
+[ext_resource type="AudioStream" uid="uid://cw4usrghffspb" path="res://assets/sound effects/bubble_pop.mp3" id="4_30ucq"]
+[ext_resource type="Script" path="res://scenes/addition_button.gd" id="4_l46ah"]
+[ext_resource type="Texture2D" uid="uid://bmfd1nhpcioyq" path="res://assets/math_buttons/addition_activated.png" id="4_st8kf"]
+[ext_resource type="AudioStream" uid="uid://bs5rcqklsknfh" path="res://assets/sound effects/typing.mp3" id="4_u4i08"]
+[ext_resource type="Texture2D" uid="uid://p2tqlla60ple" path="res://assets/math_buttons/addition.png" id="5_sh4k6"]
+[ext_resource type="Script" path="res://scenes/subtraction_button.gd" id="7_bwxj0"]
+[ext_resource type="Script" path="res://scenes/multiplication_button.gd" id="8_ek28i"]
+[ext_resource type="Texture2D" uid="uid://b1onwa343wk4x" path="res://assets/math_buttons/subtraction_activated.png" id="8_rucgq"]
+[ext_resource type="Texture2D" uid="uid://xp02ixqjod07" path="res://assets/math_buttons/subtraction.png" id="9_ed3u4"]
+[ext_resource type="Script" path="res://scenes/divide_button.gd" id="9_ro67h"]
+[ext_resource type="Texture2D" uid="uid://rdpl3s3oyfaa" path="res://assets/math_buttons/multiplication_activated.png" id="11_5f433"]
+[ext_resource type="Texture2D" uid="uid://bnqr5ktesdgw7" path="res://assets/math_buttons/multiplication.png" id="12_jarko"]
+[ext_resource type="Texture2D" uid="uid://jjficeibwq4i" path="res://assets/math_buttons/division_activated.png" id="14_y85oh"]
+[ext_resource type="Texture2D" uid="uid://dhy3g1jt70wbo" path="res://assets/math_buttons/division.png" id="15_bxo4w"]
+[ext_resource type="AudioStream" uid="uid://dxngs0whamtgc" path="res://assets/sound effects/ticking_alarm.mp3" id="18_rxejo"]
+[ext_resource type="AudioStream" uid="uid://c1bx3m3detxs6" path="res://assets/sound effects/correct_answer_chime.mp3" id="19_na3t7"]
+[ext_resource type="AudioStream" uid="uid://21208eswhbkp" path="res://assets/sound effects/beep.mp3" id="20_3xclg"]
+[ext_resource type="Texture2D" uid="uid://bemfmh1lx30oy" path="res://assets/audio_button/enabled.png" id="21_qhcgm"]
+[ext_resource type="Texture2D" uid="uid://bwulpeswno40f" path="res://assets/audio_button/disabled.png" id="22_nf10r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6im1y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5edra"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3rre4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3yj72"]
+
+[sub_resource type="Theme" id="Theme_fcoy0"]
+Button/styles/focus = SubResource("StyleBoxEmpty_6im1y")
+Button/styles/hover = SubResource("StyleBoxEmpty_5edra")
+Button/styles/normal = SubResource("StyleBoxEmpty_3rre4")
+Button/styles/pressed = SubResource("StyleBoxEmpty_3yj72")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7ydfn")
+
+[node name="Backgrounds" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5qrx8")
+
+[node name="Background3" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(1614, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5qrx8")
+
+[node name="Background2" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(-464, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5qrx8")
+
+[node name="Background7" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(576, 882)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5qrx8")
+
+[node name="Background8" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(1614, 882)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5qrx8")
+
+[node name="Background9" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(-464, 882)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5qrx8")
+
+[node name="Background4" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(576, -242)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5qrx8")
+
+[node name="Background5" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(1614, -242)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5qrx8")
+
+[node name="Background6" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(-464, -242)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5qrx8")
+
+[node name="Question" type="Node2D" parent="."]
+position = Vector2(576, 277)
+
+[node name="Label" type="Label" parent="Question"]
+offset_left = -309.0
+offset_top = -68.0
+offset_right = 181.0
+offset_bottom = 76.0
+theme = ExtResource("3_kyuh8")
+theme_override_colors/font_color = Color(0.0627451, 0.65098, 0.921569, 1)
+theme_override_font_sizes/font_size = 120
+text = "24 + 32 = "
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LineEdit" type="LineEdit" parent="Question"]
+offset_left = 181.0
+offset_top = -72.0
+offset_right = 577.0
+offset_bottom = 80.0
+theme = ExtResource("3_kyuh8")
+theme_override_colors/font_color = Color(0.0235294, 0.588235, 0.227451, 1)
+theme_override_font_sizes/font_size = 120
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Question"]
+stream = ExtResource("4_u4i08")
+
+[node name="TimerLabel" type="Label" parent="Question"]
+offset_left = -39.0
+offset_top = -87.0
+offset_right = 39.0
+offset_bottom = 92.0
+theme = ExtResource("3_kyuh8")
+theme_override_font_sizes/font_size = 150
+text = "3"
+horizontal_alignment = 1
+
+[node name="Question Marker2" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 111.0
+offset_right = 805.0
+offset_bottom = 151.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Question Marker2"]
+layout_mode = 2
+theme = ExtResource("3_kyuh8")
+theme_override_colors/font_color = Color(0.423529, 0.807843, 0.658824, 1)
+theme_override_font_sizes/font_size = 40
+text = "Mental Math"
+
+[node name="QuestionStopwatch" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 404.0
+offset_right = 616.0
+offset_bottom = 444.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="QuestionStopwatch"]
+layout_mode = 2
+theme = ExtResource("3_kyuh8")
+theme_override_font_sizes/font_size = 40
+text = "1"
+
+[node name="Math Buttons" type="Node2D" parent="."]
+position = Vector2(67, 324)
+metadata/_edit_group_ = true
+
+[node name="Addition Button" type="Node2D" parent="Math Buttons"]
+position = Vector2(0, -150)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("4_l46ah")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Math Buttons/Addition Button"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="activated" type="Sprite2D" parent="Math Buttons/Addition Button/CenterContainer2"]
+texture = ExtResource("4_st8kf")
+
+[node name="unactivated" type="Sprite2D" parent="Math Buttons/Addition Button/CenterContainer2"]
+visible = false
+texture = ExtResource("5_sh4k6")
+
+[node name="Button" type="Button" parent="Math Buttons/Addition Button"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Math Buttons/Addition Button"]
+stream = ExtResource("4_30ucq")
+
+[node name="Subtraction Button" type="Node2D" parent="Math Buttons"]
+position = Vector2(0, -50)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("7_bwxj0")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Math Buttons/Subtraction Button"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="activated" type="Sprite2D" parent="Math Buttons/Subtraction Button/CenterContainer2"]
+texture = ExtResource("8_rucgq")
+
+[node name="unactivated" type="Sprite2D" parent="Math Buttons/Subtraction Button/CenterContainer2"]
+visible = false
+texture = ExtResource("9_ed3u4")
+
+[node name="Button" type="Button" parent="Math Buttons/Subtraction Button"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Math Buttons/Subtraction Button"]
+stream = ExtResource("4_30ucq")
+
+[node name="Multiplication Button" type="Node2D" parent="Math Buttons"]
+position = Vector2(0, 50)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("8_ek28i")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Math Buttons/Multiplication Button"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="activated" type="Sprite2D" parent="Math Buttons/Multiplication Button/CenterContainer2"]
+texture = ExtResource("11_5f433")
+
+[node name="unactivated" type="Sprite2D" parent="Math Buttons/Multiplication Button/CenterContainer2"]
+visible = false
+texture = ExtResource("12_jarko")
+
+[node name="Button" type="Button" parent="Math Buttons/Multiplication Button"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Math Buttons/Multiplication Button"]
+stream = ExtResource("4_30ucq")
+
+[node name="Divide Button" type="Node2D" parent="Math Buttons"]
+position = Vector2(0, 150)
+scale = Vector2(0.64, 0.64)
+script = ExtResource("9_ro67h")
+metadata/_edit_group_ = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Math Buttons/Divide Button"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="activated" type="Sprite2D" parent="Math Buttons/Divide Button/CenterContainer2"]
+texture = ExtResource("14_y85oh")
+
+[node name="unactivated" type="Sprite2D" parent="Math Buttons/Divide Button/CenterContainer2"]
+visible = false
+texture = ExtResource("15_bxo4w")
+
+[node name="Button" type="Button" parent="Math Buttons/Divide Button"]
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 43.0
+theme = SubResource("Theme_fcoy0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Math Buttons/Divide Button"]
+stream = ExtResource("4_30ucq")
+
+[node name="Correct Answer Delay" type="Timer" parent="."]
+one_shot = true
+
+[node name="Tick" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Tick"]
+stream = ExtResource("18_rxejo")
+volume_db = -2.0
+
+[node name="CorrectAnswerChime" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_na3t7")
+
+[node name="StartupTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Startup Beep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_3xclg")
+volume_db = -1.0
+
+[node name="AudioButton" type="Node2D" parent="."]
+position = Vector2(1099, 49)
+
+[node name="CenterContainer" type="CenterContainer" parent="AudioButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+
+[node name="enabled" type="Sprite2D" parent="AudioButton/CenterContainer"]
+position = Vector2(-6.25, 7.5)
+scale = Vector2(0.772727, 0.75)
+texture = ExtResource("21_qhcgm")
+
+[node name="disabled" type="Sprite2D" parent="AudioButton/CenterContainer"]
+visible = false
+position = Vector2(-5.25, 6.25)
+scale = Vector2(0.71875, 0.71875)
+texture = ExtResource("22_nf10r")
+
+[node name="Button" type="Button" parent="AudioButton"]
+offset_left = -34.0
+offset_top = -23.0
+offset_right = 24.0
+offset_bottom = 35.0
+theme = ExtResource("3_kyuh8")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Open Source Disclaimer" type="Label" parent="Node2D"]
+offset_left = 711.0
+offset_top = 607.0
+offset_right = 1136.0
+offset_bottom = 635.0
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_font_sizes/font_size = 15
+text = "This Game is Open Source Software. Github."
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="LinkButton" type="LinkButton" parent="Node2D"]
+offset_left = 815.0
+offset_top = 616.0
+offset_right = 1134.0
+offset_bottom = 632.0
+uri = "github.com/muhdsalm/mental-math-website"
+
+[connection signal="text_changed" from="Question/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="button_down" from="Math Buttons/Addition Button/Button" to="Math Buttons/Addition Button" method="_on_button_button_down"]
+[connection signal="button_up" from="Math Buttons/Addition Button/Button" to="Math Buttons/Addition Button" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Math Buttons/Addition Button/Button" to="Math Buttons/Addition Button" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Math Buttons/Addition Button/Button" to="Math Buttons/Addition Button" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Math Buttons/Subtraction Button/Button" to="Math Buttons/Subtraction Button" method="_on_button_button_down"]
+[connection signal="button_up" from="Math Buttons/Subtraction Button/Button" to="Math Buttons/Subtraction Button" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Math Buttons/Subtraction Button/Button" to="Math Buttons/Subtraction Button" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Math Buttons/Subtraction Button/Button" to="Math Buttons/Subtraction Button" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Math Buttons/Multiplication Button/Button" to="Math Buttons/Multiplication Button" method="_on_button_button_down"]
+[connection signal="button_up" from="Math Buttons/Multiplication Button/Button" to="Math Buttons/Multiplication Button" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Math Buttons/Multiplication Button/Button" to="Math Buttons/Multiplication Button" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Math Buttons/Multiplication Button/Button" to="Math Buttons/Multiplication Button" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Math Buttons/Divide Button/Button" to="Math Buttons/Divide Button" method="_on_button_button_down"]
+[connection signal="button_up" from="Math Buttons/Divide Button/Button" to="Math Buttons/Divide Button" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Math Buttons/Divide Button/Button" to="Math Buttons/Divide Button" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Math Buttons/Divide Button/Button" to="Math Buttons/Divide Button" method="_on_button_mouse_exited"]
+[connection signal="timeout" from="Correct Answer Delay" to="." method="_on_correct_answer_delay_timeout"]
+[connection signal="timeout" from="StartupTimer" to="." method="_on_startup_timer_timeout"]
+[connection signal="pressed" from="AudioButton/Button" to="." method="_on_button_pressed"]

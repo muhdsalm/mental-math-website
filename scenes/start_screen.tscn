@@ -1,0 +1,160 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm8sg1t4b57sm"]
+
+[ext_resource type="Texture2D" uid="uid://bel78ywodhxq8" path="res://assets/background.svg" id="1_06uis"]
+[ext_resource type="Script" path="res://scenes/start_screen.gd" id="1_lleln"]
+[ext_resource type="Theme" uid="uid://dj8bwgitxx4xk" path="res://game_theme.tres" id="2_edg68"]
+[ext_resource type="Texture2D" uid="uid://bemfmh1lx30oy" path="res://assets/audio_button/enabled.png" id="4_owfx5"]
+[ext_resource type="Texture2D" uid="uid://bwulpeswno40f" path="res://assets/audio_button/disabled.png" id="5_snmbd"]
+[ext_resource type="AudioStream" uid="uid://cw4usrghffspb" path="res://assets/sound effects/bubble_pop.mp3" id="6_0ruek"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lleln")
+
+[node name="Backgrounds" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_06uis")
+
+[node name="Background3" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(1614, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_06uis")
+
+[node name="Background2" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(-464, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_06uis")
+
+[node name="Background7" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(576, 882)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_06uis")
+
+[node name="Background8" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(1614, 882)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_06uis")
+
+[node name="Background9" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(-464, 882)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_06uis")
+
+[node name="Background4" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(576, -242)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_06uis")
+
+[node name="Background5" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(1614, -242)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_06uis")
+
+[node name="Background6" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(-464, -242)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_06uis")
+
+[node name="TitleText" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_top = 266.0
+offset_right = 40.0
+offset_bottom = 306.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="TitleText"]
+layout_mode = 2
+theme = ExtResource("2_edg68")
+theme_override_font_sizes/font_size = 120
+text = "MENTAL MATH"
+
+[node name="CotinueText" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_top = 365.0
+offset_right = 40.0
+offset_bottom = 405.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="CotinueText"]
+layout_mode = 2
+theme = ExtResource("2_edg68")
+theme_override_colors/font_color = Color(0.701961, 0.701961, 0.701961, 1)
+theme_override_font_sizes/font_size = 30
+text = "Press any number key to start"
+horizontal_alignment = 1
+
+[node name="MobileAppText" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 432.0
+offset_right = 40.0
+offset_bottom = 472.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="MobileAppText"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.701961, 0.701961, 0.701961, 1)
+text = "If this website gets a lot of traffic, I will make a mobile app for this too.
+~ The Dev"
+
+[node name="AudioButton" type="Node2D" parent="."]
+position = Vector2(1099, 49)
+
+[node name="CenterContainer" type="CenterContainer" parent="AudioButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+
+[node name="enabled" type="Sprite2D" parent="AudioButton/CenterContainer"]
+position = Vector2(-6.25, 7.5)
+scale = Vector2(0.772727, 0.75)
+texture = ExtResource("4_owfx5")
+
+[node name="disabled" type="Sprite2D" parent="AudioButton/CenterContainer"]
+visible = false
+position = Vector2(-5.25, 6.25)
+scale = Vector2(0.71875, 0.71875)
+texture = ExtResource("5_snmbd")
+
+[node name="Button" type="Button" parent="AudioButton"]
+offset_left = -34.0
+offset_top = -23.0
+offset_right = 24.0
+offset_bottom = 35.0
+theme = ExtResource("2_edg68")
+
+[node name="pop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0ruek")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Open Source Disclaimer" type="Label" parent="Node2D"]
+offset_left = 711.0
+offset_top = 607.0
+offset_right = 1136.0
+offset_bottom = 635.0
+theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_font_sizes/font_size = 15
+text = "This Game is Open Source Software. Github."
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="LinkButton" type="LinkButton" parent="Node2D"]
+offset_left = 815.0
+offset_top = 616.0
+offset_right = 1134.0
+offset_bottom = 632.0
+uri = "github.com/muhdsalm/mental-math-website"
+
+[connection signal="pressed" from="AudioButton/Button" to="." method="_on_button_pressed"]

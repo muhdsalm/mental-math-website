@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bs5rcqklsknfh"
+path="res://.godot/imported/typing.mp3-e48cb2305e285969a02bb7bf929a125a.mp3str"
+
+[deps]
+
+source_file="res://assets/sound effects/typing.mp3"
+dest_files=["res://.godot/imported/typing.mp3-e48cb2305e285969a02bb7bf929a125a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

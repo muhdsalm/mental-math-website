@@ -1,0 +1,29 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dj8bwgitxx4xk"]
+
+[ext_resource type="FontFile" uid="uid://dshlgu7eddf68" path="res://assets/Super Caramel.ttf" id="1_nhlsw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_07jw8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mq08s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kxu3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ichg1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7xm7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_70ywk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfq84"]
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxEmpty_07jw8")
+Button/styles/focus = SubResource("StyleBoxEmpty_mq08s")
+Button/styles/hover = SubResource("StyleBoxEmpty_6kxu3")
+Button/styles/normal = SubResource("StyleBoxEmpty_ichg1")
+Button/styles/pressed = SubResource("StyleBoxEmpty_n7xm7")
+Label/colors/font_color = Color(0.423529, 0.807843, 0.658824, 1)
+Label/fonts/font = ExtResource("1_nhlsw")
+LineEdit/fonts/font = ExtResource("1_nhlsw")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_70ywk")
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_nfq84")
