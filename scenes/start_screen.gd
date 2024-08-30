@@ -32,7 +32,6 @@ func _process(delta: float) -> void:
 		opacity += 0.01
 		if opacity >= 1:
 			increase = false
-	print(opacity)
 	$CotinueText/Label.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7, opacity))
 	
 	if Input.is_action_just_pressed("any_number_key") and should_continue:
