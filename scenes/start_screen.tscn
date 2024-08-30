@@ -79,6 +79,23 @@ theme = ExtResource("2_edg68")
 theme_override_font_sizes/font_size = 120
 text = "MENTAL MATH"
 
+[node name="TitleTextAndroid" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 266.0
+offset_right = 40.0
+offset_bottom = 306.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="TitleTextAndroid"]
+layout_mode = 2
+theme = ExtResource("2_edg68")
+theme_override_font_sizes/font_size = 200
+text = "MENTAL
+MATH"
+horizontal_alignment = 1
+
 [node name="CotinueText" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_top = 365.0
@@ -167,6 +184,7 @@ vertical_alignment = 2
 [node name="StartButton" type="Node2D" parent="."]
 visible = false
 position = Vector2(0, 384)
+scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="StartButton"]
@@ -175,14 +193,13 @@ offset_bottom = 40.0
 use_top_left = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StartButton/CenterContainer"]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_kpsy0")
 
 [node name="Button" type="Button" parent="StartButton"]
-offset_left = -114.0
-offset_top = -40.0
-offset_right = 114.0
-offset_bottom = 39.0
+offset_left = -228.0
+offset_top = -80.0
+offset_right = 227.0
+offset_bottom = 79.0
 theme = ExtResource("2_edg68")
 
 [node name="Background10" type="Sprite2D" parent="."]

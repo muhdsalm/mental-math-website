@@ -35,6 +35,7 @@ func _ready() -> void:
 		else:
 			$Numpads2.visible = true
 			$"Math Buttons".scale = Vector2(2, 2)
+			$AudioButton.scale = Vector2(3, 3)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,7 +45,10 @@ func _process(delta: float) -> void:
 	$QuestionStopwatch.position.x = get_viewport_rect().size.x / 2
 	$"Math Buttons".position.x = get_viewport_rect().size.x * 0.083333333
 	$"Math Buttons".position.y = get_viewport_rect().size.y / 2
-	$AudioButton.position.x = get_viewport_rect().size.x * 0.953993056
+	if !is_ios_or_android:
+		$AudioButton.position.x = get_viewport_rect().size.x * 0.953993056
+	else:
+		$AudioButton.position.x = get_viewport_rect().size.x * 0.893229167
 	$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x * 0.842013889
 	$Numpads.position.x = get_viewport_rect().size.x * 0.895833333
 	$Numpads2.position.x = get_viewport_rect().size.x / 2

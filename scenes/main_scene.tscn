@@ -341,7 +341,8 @@ stream = ExtResource("20_3xclg")
 volume_db = -1.0
 
 [node name="AudioButton" type="Node2D" parent="."]
-position = Vector2(1099, 49)
+position = Vector2(1029, 109)
+scale = Vector2(3, 3)
 metadata/_edit_group_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="AudioButton"]

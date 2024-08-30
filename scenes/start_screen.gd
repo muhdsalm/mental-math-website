@@ -13,12 +13,20 @@ func _ready() -> void:
 		should_continue = false
 		$CotinueText/Label.visible = false
 		$StartButton.visible = true
+		if get_viewport_rect().size.y > get_viewport_rect().size.x:
+			$OpenSourceDisclaimer.scale = Vector2(4, 4)
+			$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x / 2
+			$StartButton.scale = Vector2(1, 1)
+			$StartButton.position.y = get_viewport_rect().size.y / 2
+			$TitleTextAndroid.visible = true
+			$TitleText.visible = false
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$TitleText.position.x = get_viewport_rect().size.x / 2
+	$TitleTextAndroid.position.x = get_viewport_rect().size.x / 2
 	$CotinueText.position.x = get_viewport_rect().size.x / 2
 	$AudioButton.position.x = get_viewport_rect().size.x * 0.953993056
 	$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x * 0.842013889
