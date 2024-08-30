@@ -30,13 +30,14 @@ func _on_button_button_down() -> void:
 		$CenterContainer2/activated.visible = false
 		get_tree().current_scene.division = false
 		get_tree().current_scene.enabled_options -= 1
+		get_tree().current_scene.the_holy_trinity()
 	elif !on:
 		on = true
 		$CenterContainer2/unactivated.visible = false
 		$CenterContainer2/activated.visible = true
 		get_tree().current_scene.division = true
 		get_tree().current_scene.enabled_options += 1
-	get_tree().current_scene.the_holy_trinity()	
+		get_tree().current_scene.the_holy_trinity()
 
 func _on_button_button_up() -> void:
 	scale = Vector2(0.74, 0.74)

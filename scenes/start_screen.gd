@@ -19,6 +19,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$TitleText.position.x = get_viewport_rect().size.x / 2
 	$CotinueText.position.x = get_viewport_rect().size.x / 2
+	$AudioButton.position.x = get_viewport_rect().size.x * 0.953993056
+	$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x * 0.842013889
 	if !should_continue:
 		$MobileAppText.position.x = get_viewport_rect().size.x / 2
 	if !increase and should_continue:

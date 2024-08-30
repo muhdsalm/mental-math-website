@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm8sg1t4b57sm"]
+[gd_scene load_steps=8 format=3 uid="uid://bm8sg1t4b57sm"]
 
 [ext_resource type="Texture2D" uid="uid://bel78ywodhxq8" path="res://assets/background.svg" id="1_06uis"]
 [ext_resource type="Script" path="res://scenes/start_screen.gd" id="1_lleln"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bemfmh1lx30oy" path="res://assets/audio_button/enabled.png" id="4_owfx5"]
 [ext_resource type="Texture2D" uid="uid://bwulpeswno40f" path="res://assets/audio_button/disabled.png" id="5_snmbd"]
 [ext_resource type="AudioStream" uid="uid://cw4usrghffspb" path="res://assets/sound effects/bubble_pop.mp3" id="6_0ruek"]
+[ext_resource type="FontFile" uid="uid://bbg3epqes1rug" path="res://assets/Inter-VariableFont_slnt,wght.ttf" id="7_l0eak"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -137,24 +138,29 @@ theme = ExtResource("2_edg68")
 [node name="pop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_0ruek")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="OpenSourceDisclaimer" type="Node2D" parent="."]
+position = Vector2(970, 620)
+metadata/_edit_group_ = true
 
-[node name="Open Source Disclaimer" type="Label" parent="Node2D"]
-offset_left = 711.0
-offset_top = 607.0
-offset_right = 1136.0
-offset_bottom = 635.0
+[node name="LinkButton" type="LinkButton" parent="OpenSourceDisclaimer"]
+offset_left = -161.0
+offset_top = -8.0
+offset_right = 158.0
+offset_bottom = 8.0
+uri = "github.com/muhdsalm/mental-math-website"
+
+[node name="CenterContainer" type="CenterContainer" parent="OpenSourceDisclaimer"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+
+[node name="Open Source Disclaimer" type="Label" parent="OpenSourceDisclaimer/CenterContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_fonts/font = ExtResource("7_l0eak")
 theme_override_font_sizes/font_size = 15
 text = "This Game is Open Source Software. Github."
 horizontal_alignment = 2
 vertical_alignment = 2
-
-[node name="LinkButton" type="LinkButton" parent="Node2D"]
-offset_left = 815.0
-offset_top = 616.0
-offset_right = 1134.0
-offset_bottom = 632.0
-uri = "github.com/muhdsalm/mental-math-website"
 
 [connection signal="pressed" from="AudioButton/Button" to="." method="_on_button_pressed"]

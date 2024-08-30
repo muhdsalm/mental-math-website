@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cdft7sqdsa1f7"]
+[gd_scene load_steps=29 format=3 uid="uid://cdft7sqdsa1f7"]
 
 [ext_resource type="Script" path="res://scenes/main_scene.gd" id="1_7ydfn"]
 [ext_resource type="Texture2D" uid="uid://bel78ywodhxq8" path="res://assets/background.svg" id="2_5qrx8"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://21208eswhbkp" path="res://assets/sound effects/beep.mp3" id="20_3xclg"]
 [ext_resource type="Texture2D" uid="uid://bemfmh1lx30oy" path="res://assets/audio_button/enabled.png" id="21_qhcgm"]
 [ext_resource type="Texture2D" uid="uid://bwulpeswno40f" path="res://assets/audio_button/disabled.png" id="22_nf10r"]
+[ext_resource type="FontFile" uid="uid://bbg3epqes1rug" path="res://assets/Inter-VariableFont_slnt,wght.ttf" id="23_dbnue"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6im1y"]
 
@@ -304,6 +305,7 @@ volume_db = -1.0
 
 [node name="AudioButton" type="Node2D" parent="."]
 position = Vector2(1099, 49)
+metadata/_edit_group_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="AudioButton"]
 offset_right = 40.0
@@ -328,25 +330,30 @@ offset_right = 24.0
 offset_bottom = 35.0
 theme = ExtResource("3_kyuh8")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="OpenSourceDisclaimer" type="Node2D" parent="."]
+position = Vector2(970, 620)
+metadata/_edit_group_ = true
 
-[node name="Open Source Disclaimer" type="Label" parent="Node2D"]
-offset_left = 711.0
-offset_top = 607.0
-offset_right = 1136.0
-offset_bottom = 635.0
+[node name="LinkButton" type="LinkButton" parent="OpenSourceDisclaimer"]
+offset_left = -161.0
+offset_top = -8.0
+offset_right = 158.0
+offset_bottom = 8.0
+uri = "github.com/muhdsalm/mental-math-website"
+
+[node name="CenterContainer" type="CenterContainer" parent="OpenSourceDisclaimer"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+
+[node name="Open Source Disclaimer" type="Label" parent="OpenSourceDisclaimer/CenterContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.615686, 0.615686, 0.615686, 1)
+theme_override_fonts/font = ExtResource("23_dbnue")
 theme_override_font_sizes/font_size = 15
 text = "This Game is Open Source Software. Github."
 horizontal_alignment = 2
 vertical_alignment = 2
-
-[node name="LinkButton" type="LinkButton" parent="Node2D"]
-offset_left = 815.0
-offset_top = 616.0
-offset_right = 1134.0
-offset_bottom = 632.0
-uri = "github.com/muhdsalm/mental-math-website"
 
 [connection signal="text_changed" from="Question/LineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="button_down" from="Math Buttons/Addition Button/Button" to="Math Buttons/Addition Button" method="_on_button_button_down"]

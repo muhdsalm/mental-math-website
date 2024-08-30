@@ -33,6 +33,8 @@ func _process(delta: float) -> void:
 	$"Question Marker2".position.x = get_viewport_rect().size.x / 2
 	$QuestionStopwatch.position.x = get_viewport_rect().size.x / 2
 	$"Math Buttons".position.x = get_viewport_rect().size.x * 0.058159722
+	$AudioButton.position.x = get_viewport_rect().size.x * 0.953993056
+	$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x * 0.842013889
 	
 	if update_number:
 		$QuestionStopwatch/Label.text = str("%.2f" % ((Time.get_ticks_msec() - start_of_puzzle_number) / 1000.0))
