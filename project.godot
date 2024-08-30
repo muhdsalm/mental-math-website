@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Mental Math Competition Website"
+config/name="Mental Math Website"
 run/main_scene="res://scenes/start_screen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.937255, 0.898039, 1, 1)
