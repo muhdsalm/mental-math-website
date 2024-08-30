@@ -14,7 +14,7 @@ func _ready() -> void:
 		$CotinueText/Label.visible = false
 		$StartButton.visible = true
 		if get_viewport_rect().size.y > get_viewport_rect().size.x:
-			$OpenSourceDisclaimer.scale = Vector2(4, 4)
+			$OpenSourceDisclaimer.position.y = get_viewport_rect().size.y * 0.956790123
 			$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x / 2
 			$StartButton.scale = Vector2(1, 1)
 			$StartButton.position.y = get_viewport_rect().size.y / 2
