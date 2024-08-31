@@ -16,8 +16,6 @@ func _ready() -> void:
 		if get_viewport_rect().size.y > get_viewport_rect().size.x:
 			$OpenSourceDisclaimer.position.y = get_viewport_rect().size.y * 0.956790123
 			$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x / 2
-			$StartButton.scale = Vector2(1, 1)
-			$StartButton.position.y = get_viewport_rect().size.y / 2
 			$PortraitAndroidStuff.visible = true
 			$TitleText.visible = false
 			$PortraitAndroidStuff.position.x = get_viewport_rect().size.x / 2
