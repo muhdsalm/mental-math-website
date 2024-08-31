@@ -110,15 +110,19 @@ func get_random_number_and_perform_operation():
 		sum = int(num1 / num2)
 
 func apply_vars_to_ui():
+	var label = $Question/Label
+	if is_ios_or_android:
+		label = $Question2/Label
 	if operation == "addition":
-		$Question/Label.text = str(num1) + " + " + str(num2) + " = "
+		label.text = str(num1) + " + " + str(num2) + " = "
 	if operation == "subtraction":
-		$Question/Label.text = str(num1) + " - " + str(num2) + " = "
+		label.text = str(num1) + " - " + str(num2) + " = "
 	if operation == "multiplication":
-		$Question/Label.text = str(num1) + " × " + str(num2) + " = "
+		label.text = str(num1) + " × " + str(num2) + " = "
 	if operation == "division":
-		$Question/Label.text = str(num1) + " ÷ " + str(num2) + " = "
+		label.text = str(num1) + " ÷ " + str(num2) + " = "
 	$Question/QuestionLineEdit.text = ""
+	$Question2/QuestionLineEdit2.text = ""
 	if !is_ios_or_android:
 		$Question/QuestionLineEdit.grab_focus()
 
