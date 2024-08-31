@@ -79,23 +79,6 @@ theme = ExtResource("2_edg68")
 theme_override_font_sizes/font_size = 120
 text = "MENTAL MATH"
 
-[node name="TitleTextAndroid" type="CenterContainer" parent="."]
-visible = false
-layout_mode = 0
-offset_top = 266.0
-offset_right = 40.0
-offset_bottom = 306.0
-use_top_left = true
-metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="TitleTextAndroid"]
-layout_mode = 2
-theme = ExtResource("2_edg68")
-theme_override_font_sizes/font_size = 200
-text = "MENTAL
-MATH"
-horizontal_alignment = 1
-
 [node name="CotinueText" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_top = 365.0
@@ -114,7 +97,6 @@ horizontal_alignment = 1
 
 [node name="MobileAppText" type="CenterContainer" parent="."]
 visible = false
-layout_mode = 0
 offset_top = 432.0
 offset_right = 40.0
 offset_bottom = 472.0
@@ -212,6 +194,45 @@ position = Vector2(584, 1994)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_06uis")
 
+[node name="PortraitAndroidStuff" type="Node2D" parent="."]
+visible = false
+
+[node name="StartButton" type="Node2D" parent="PortraitAndroidStuff"]
+position = Vector2(0, 250)
+metadata/_edit_group_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="PortraitAndroidStuff/StartButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+
+[node name="Sprite2D" type="Sprite2D" parent="PortraitAndroidStuff/StartButton/CenterContainer"]
+texture = ExtResource("8_kpsy0")
+
+[node name="Button" type="Button" parent="PortraitAndroidStuff/StartButton"]
+offset_left = -228.0
+offset_top = -80.0
+offset_right = 227.0
+offset_bottom = 79.0
+theme = ExtResource("2_edg68")
+
+[node name="TitleTextAndroid" type="CenterContainer" parent="PortraitAndroidStuff"]
+offset_top = -100.0
+offset_right = 40.0
+offset_bottom = -60.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="PortraitAndroidStuff/TitleTextAndroid"]
+layout_mode = 2
+theme = ExtResource("2_edg68")
+theme_override_font_sizes/font_size = 200
+text = "MENTAL
+MATH"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="AudioButton/Button" to="." method="_on_button_pressed"]
 [connection signal="button_down" from="StartButton/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="StartButton/Button" to="." method="_on_button_button_up"]
+[connection signal="button_down" from="PortraitAndroidStuff/StartButton/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="PortraitAndroidStuff/StartButton/Button" to="." method="_on_button_button_up"]

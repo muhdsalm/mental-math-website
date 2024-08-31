@@ -18,8 +18,10 @@ func _ready() -> void:
 			$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x / 2
 			$StartButton.scale = Vector2(1, 1)
 			$StartButton.position.y = get_viewport_rect().size.y / 2
-			$TitleTextAndroid.visible = true
+			$PortraitAndroidStuff.visible = true
 			$TitleText.visible = false
+			$PortraitAndroidStuff.position.x = get_viewport_rect().size.x / 2
+			$PortraitAndroidStuff.position.y = get_viewport_rect().size.y / 2
 	pass # Replace with function body.
 
 

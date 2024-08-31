@@ -743,7 +743,7 @@ stream = ExtResource("4_30ucq")
 
 [node name="Numpads2" type="Node2D" parent="."]
 visible = false
-position = Vector2(594, 1163)
+position = Vector2(594, 1507)
 scale = Vector2(3.5, 3.5)
 script = ExtResource("24_2lfe6")
 metadata/_edit_group_ = true
