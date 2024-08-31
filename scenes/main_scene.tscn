@@ -199,6 +199,7 @@ offset_bottom = 237.0
 theme = ExtResource("3_kyuh8")
 theme_override_colors/font_color = Color(0.0235294, 0.588235, 0.227451, 1)
 theme_override_font_sizes/font_size = 120
+alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="TypingAudioStreamPlayer" type="AudioStreamPlayer" parent="Question2"]
@@ -743,7 +744,7 @@ stream = ExtResource("4_30ucq")
 
 [node name="Numpads2" type="Node2D" parent="."]
 visible = false
-position = Vector2(594, 1507)
+position = Vector2(594, 1163)
 scale = Vector2(3.5, 3.5)
 script = ExtResource("24_2lfe6")
 metadata/_edit_group_ = true

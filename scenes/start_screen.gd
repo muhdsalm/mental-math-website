@@ -18,6 +18,7 @@ func _ready() -> void:
 			$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x / 2
 			$PortraitAndroidStuff.visible = true
 			$TitleText.visible = false
+			$StartButton.visible = false
 			$PortraitAndroidStuff.position.x = get_viewport_rect().size.x / 2
 			$PortraitAndroidStuff.position.y = get_viewport_rect().size.y / 2
 	pass # Replace with function body.
@@ -26,7 +27,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$TitleText.position.x = get_viewport_rect().size.x / 2
-	$TitleTextAndroid.position.x = get_viewport_rect().size.x / 2
 	$CotinueText.position.x = get_viewport_rect().size.x / 2
 	$AudioButton.position.x = get_viewport_rect().size.x * 0.953993056
 	$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x * 0.842013889

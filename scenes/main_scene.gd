@@ -24,6 +24,7 @@ var is_ios_or_android
 func _ready() -> void:
 	muted = Globals.muted
 	$Question/Label.text = ""
+	$Question2/Label.text = ""
 	$QuestionStopwatch/Label.text = ""
 	if !muted:
 		$"Startup Beep".play()
@@ -41,7 +42,7 @@ func _ready() -> void:
 			$"Question Marker2".scale = Vector2(3, 3)
 			$"Question Marker2".position.y = 177
 			$QuestionStopwatch.scale = Vector2(2, 2)
-			$QuestionStopwatch.position.y = 1289
+			$QuestionStopwatch.position.y = 654
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -151,10 +152,12 @@ func conditional_holy_trinity(condition: String):
 func _on_startup_timer_timeout() -> void:
 	startup_count -= 1
 	$Question/TimerLabel.text = str(startup_count)
+	$Question2/TimerLabel.text = str(startup_count)
 	if !muted:
 		$"Startup Beep".play()
 	if startup_count < 0:
 		$Question/TimerLabel.visible = false
+		$Question2/TimerLabel.visible = false
 		$StartupTimer.stop()
 		update_number = true
 		the_holy_trinity()
