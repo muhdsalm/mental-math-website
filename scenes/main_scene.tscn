@@ -131,6 +131,7 @@ texture = ExtResource("2_5qrx8")
 
 [node name="Question" type="Node2D" parent="."]
 position = Vector2(576, 277)
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="Question"]
 offset_left = -309.0

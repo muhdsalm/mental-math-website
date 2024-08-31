@@ -36,6 +36,9 @@ func _ready() -> void:
 			$Numpads2.visible = true
 			$"Math Buttons".scale = Vector2(2, 2)
 			$AudioButton.scale = Vector2(3, 3)
+			$Question.scale = Vector2(1.5, 1.5)
+			$Question.position.y = 332
+			$"Question Marker2".scale = Vector2(3, 3)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
