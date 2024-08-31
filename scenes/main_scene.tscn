@@ -171,6 +171,49 @@ theme_override_font_sizes/font_size = 150
 text = "3"
 horizontal_alignment = 1
 
+[node name="Question2" type="Node2D" parent="."]
+visible = false
+position = Vector2(576, 477)
+scale = Vector2(2, 2)
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Question2"]
+offset_left = -232.0
+offset_top = -68.0
+offset_right = 258.0
+offset_bottom = 76.0
+theme = ExtResource("3_kyuh8")
+theme_override_colors/font_color = Color(0.0627451, 0.65098, 0.921569, 1)
+theme_override_font_sizes/font_size = 120
+text = "24 + 32 = "
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="QuestionLineEdit2" type="LineEdit" parent="Question2"]
+unique_name_in_owner = true
+offset_left = -203.0
+offset_top = 85.0
+offset_right = 193.0
+offset_bottom = 237.0
+theme = ExtResource("3_kyuh8")
+theme_override_colors/font_color = Color(0.0235294, 0.588235, 0.227451, 1)
+theme_override_font_sizes/font_size = 120
+metadata/_edit_use_anchors_ = true
+
+[node name="TypingAudioStreamPlayer" type="AudioStreamPlayer" parent="Question2"]
+stream = ExtResource("4_u4i08")
+
+[node name="TimerLabel" type="Label" parent="Question2"]
+offset_left = -39.0
+offset_top = -87.0
+offset_right = 39.0
+offset_bottom = 92.0
+theme = ExtResource("3_kyuh8")
+theme_override_font_sizes/font_size = 150
+text = "3"
+horizontal_alignment = 1
+
 [node name="Question Marker2" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_left = 576.0
@@ -1005,6 +1048,7 @@ theme = SubResource("Theme_fcoy0")
 stream = ExtResource("4_30ucq")
 
 [connection signal="text_changed" from="Question/QuestionLineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_changed" from="Question2/QuestionLineEdit2" to="." method="_on_line_edit_text_changed"]
 [connection signal="button_down" from="Math Buttons/Addition Button/Button" to="Math Buttons/Addition Button" method="_on_button_button_down"]
 [connection signal="button_up" from="Math Buttons/Addition Button/Button" to="Math Buttons/Addition Button" method="_on_button_button_up"]
 [connection signal="mouse_entered" from="Math Buttons/Addition Button/Button" to="Math Buttons/Addition Button" method="_on_button_mouse_entered"]
