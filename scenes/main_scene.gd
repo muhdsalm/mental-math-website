@@ -94,19 +94,19 @@ func get_operation_from_number(number: int, operation_array=[["addition", additi
 
 func get_random_number_and_perform_operation():
 	if operation == "addition":
-		num1 = randi_range(1, 100)
-		num2 = randi_range(1, 100)
+		num1 = randi_range(1, 99)
+		num2 = randi_range(1, 99)
 		sum = num1 + num2
 	if operation == "subtraction":
-		num1 = randi_range(1, 100)
-		num2 = randi_range(1, 100)
+		num1 = randi_range(1, 99)
+		num2 = randi_range(1, 99)
 		sum = num1 - num2
 	if operation == "multiplication":
 		num1 = randi_range(2, 20)
 		num2 = randi_range(2, 20)
 		sum = num1 * num2
 	if operation == "division":
-		num1 = randi_range(1, 100)
+		num1 = randi_range(1, 99)
 		num2 = randi_range(1, 10)
 		sum = int(num1 / num2)
 
