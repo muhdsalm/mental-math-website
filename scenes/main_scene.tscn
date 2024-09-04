@@ -246,6 +246,24 @@ theme = ExtResource("3_kyuh8")
 theme_override_font_sizes/font_size = 40
 text = "1"
 
+[node name="MessageBox" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 576.0
+offset_top = 461.0
+offset_right = 616.0
+offset_bottom = 501.0
+use_top_left = true
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="MessageBox"]
+layout_mode = 2
+theme = ExtResource("3_kyuh8")
+theme_override_colors/font_color = Color(0.964706, 0.0784314, 0.368627, 1)
+theme_override_font_sizes/font_size = 20
+text = "Enter the correct answer to proceed"
+horizontal_alignment = 1
+
 [node name="Math Buttons" type="Node2D" parent="."]
 position = Vector2(96, 324)
 metadata/_edit_group_ = true
@@ -1048,6 +1066,9 @@ theme = SubResource("Theme_fcoy0")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Numpads2/Numpad Minus"]
 stream = ExtResource("4_30ucq")
 
+[node name="WarningTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="text_changed" from="Question/QuestionLineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="text_changed" from="Question2/QuestionLineEdit2" to="." method="_on_line_edit_text_changed"]
 [connection signal="button_down" from="Math Buttons/Addition Button/Button" to="Math Buttons/Addition Button" method="_on_button_button_down"]
@@ -1161,3 +1182,4 @@ stream = ExtResource("4_30ucq")
 [connection signal="button_up" from="Numpads2/Numpad Minus/Button" to="Numpads2/Numpad Minus" method="_on_button_button_up"]
 [connection signal="mouse_entered" from="Numpads2/Numpad Minus/Button" to="Numpads2/Numpad Minus" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Numpads2/Numpad Minus/Button" to="Numpads2/Numpad Minus" method="_on_button_mouse_exited"]
+[connection signal="timeout" from="WarningTimer" to="." method="_on_warning_timer_timeout"]

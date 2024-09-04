@@ -65,6 +65,11 @@ func _process(delta: float) -> void:
 	elif $Question/QuestionLineEdit.text != frozen_answer:
 		$Question/QuestionLineEdit.text = frozen_answer
 		$Question/QuestionLineEdit.add_theme_color_override("font_color", Color.from_string("06963aff", Color(1, 1, 1)))
+		$Question2/QuestionLineEdit2.add_theme_color_override("font_color", Color.from_string("06963aff", Color(1, 1, 1)))
+		
+	if Input.is_action_just_released("ui_enter") and not is_ios_or_android:
+		$MessageBox.visible = true
+		$WarningTimer.start()
 		
 
 func line_edit_changed_function(new_text: String):
@@ -176,3 +181,7 @@ func _on_button_pressed() -> void:
 		$AudioButton/CenterContainer/disabled.visible = false
 		$"Math Buttons/Addition Button/AudioStreamPlayer".play()
 		$Tick/AudioStreamPlayer.play()
+
+
+func _on_warning_timer_timeout() -> void:
+	$MessageBox.visible = false
