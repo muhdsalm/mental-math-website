@@ -98,7 +98,7 @@ body {
 		<script src="index.js"></script>
 		<script>
 const GODOT_THREADS_ENABLED = false;
-const engine = new Engine(GODOT_CONFIG);
+const engine = new Engine();
 
 (function () {
 	const statusOverlay = document.getElementById('status');
@@ -152,7 +152,6 @@ const engine = new Engine(GODOT_CONFIG);
 	});
 
 	if (missing.length !== 0) {
-		if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator) {
 			// There's a chance that installing the service worker would fix the issue
 			Promise.race([
 				navigator.serviceWorker.getRegistration().then((registration) => {
@@ -170,11 +169,9 @@ const engine = new Engine(GODOT_CONFIG);
 			}).then(() => {
 				window.location.reload();
 			});
-		} else {
 			// Display the message as usual
 			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
 			displayFailureNotice(missingMsg + missing.join('\n'));
-		}
 	} else {
 		setStatusMode('progress');
 		engine.startGame({
