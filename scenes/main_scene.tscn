@@ -459,7 +459,6 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="Numpads" type="Node2D" parent="."]
-visible = false
 position = Vector2(1032, 437)
 script = ExtResource("24_2lfe6")
 metadata/_edit_group_ = true
