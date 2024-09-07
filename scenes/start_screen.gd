@@ -16,9 +16,13 @@ func _ready() -> void:
 		if get_viewport_rect().size.y > get_viewport_rect().size.x:
 			$OpenSourceDisclaimer.position.y = get_viewport_rect().size.y * 0.956790123
 			$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x / 2
-			$PortraitAndroidStuff.visible = true
 			$TitleText.visible = false
 			$StartButton.visible = false
+			if get_viewport_rect().size.y > get_viewport_rect().size.x and get_viewport_rect().size.y < $PortraitHeightRequirement.position.y:
+				$CotinueText/Label.text = "Please use this website in landscape mode."
+				$CotinueText/Label.visible = true
+				return
+			$PortraitAndroidStuff.visible = true
 			$PortraitAndroidStuff.position.x = get_viewport_rect().size.x / 2
 			$PortraitAndroidStuff.position.y = get_viewport_rect().size.y / 2
 	pass # Replace with function body.

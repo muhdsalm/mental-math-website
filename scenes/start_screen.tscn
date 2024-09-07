@@ -232,6 +232,9 @@ text = "MENTAL
 MATH"
 horizontal_alignment = 1
 
+[node name="PortraitHeightRequirement" type="Node2D" parent="."]
+position = Vector2(598, 1747)
+
 [connection signal="pressed" from="AudioButton/Button" to="." method="_on_button_pressed"]
 [connection signal="button_down" from="StartButton/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="StartButton/Button" to="." method="_on_button_button_up"]
