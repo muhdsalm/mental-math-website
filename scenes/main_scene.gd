@@ -36,13 +36,12 @@ func _ready() -> void:
 		else:
 			$Numpads2.visible = true
 			$"Math Buttons".scale = Vector2(2, 2)
-			$AudioButton.scale = Vector2(3, 3)
+			$AudioButton.visible = false
 			$Question.visible = false
 			$Question2.visible = true
-			$"Question Marker2".scale = Vector2(3, 3)
-			$"Question Marker2".position.y = 177
+			$"Question Marker2".visible = false
 			$QuestionStopwatch.scale = Vector2(2, 2)
-			$QuestionStopwatch.position.y = 654
+			$QuestionStopwatch.position.y = 1985
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,13 +55,20 @@ func _process(delta: float) -> void:
 		$AudioButton.position.x = get_viewport_rect().size.x * 0.953993056
 	else:
 		$AudioButton.position.x = get_viewport_rect().size.x * 0.893229167
-	$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x * 0.842013889
+	if get_viewport_rect().size.y > get_viewport_rect().size.x:
+		$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x * 0.6
+	else:
+		$OpenSourceDisclaimer.position.x = get_viewport_rect().size.x * 0.85
 	$Numpads.position.x = get_viewport_rect().size.x * 0.895833333
 	$Numpads2.position.x = get_viewport_rect().size.x / 2
+	$OpenSourceDisclaimer.position.y = get_viewport_rect().size.y * 0.956790123
+	$MessageBox.position.x = get_viewport_rect().size.x / 2
+	if get_viewport_rect().size.y > get_viewport_rect().size.x:
+		$"OpenSourceDisclaimer/CenterContainer/Open Source Disclaimer".add_theme_font_size_override("font_size", 40)
 	
 	if update_number:
 		$QuestionStopwatch/Label.text = str("%.2f" % ((Time.get_ticks_msec() - start_of_puzzle_number) / 1000.0))
-	elif $Question/QuestionLineEdit.text != frozen_answer:
+	elif $Question/QuestionLineEdit.text != frozen_answer or $Question2/QuestionLineEdit2.text != frozen_answer:
 		$Question/QuestionLineEdit.text = frozen_answer
 		$Question/QuestionLineEdit.add_theme_color_override("font_color", Color.from_string("06963aff", Color(1, 1, 1)))
 		$Question2/QuestionLineEdit2.add_theme_color_override("font_color", Color.from_string("06963aff", Color(1, 1, 1)))
@@ -78,6 +84,7 @@ func line_edit_changed_function(new_text: String):
 	
 	if new_text == str(sum):
 		$Question/QuestionLineEdit.add_theme_color_override("font_color", Color.from_string("06963aff", Color(1, 1, 1)))
+		$Question2/QuestionLineEdit2.add_theme_color_override("font_color", Color.from_string("06963aff", Color(1, 1, 1)))
 		update_number = false
 		frozen_answer = new_text
 		$"Correct Answer Delay".start()
@@ -86,6 +93,7 @@ func line_edit_changed_function(new_text: String):
 			$CorrectAnswerChime.play()
 	else:
 		$Question/QuestionLineEdit.add_theme_color_override("font_color", Color.from_string("f6145eff", Color(1, 1, 1)))
+		$Question2/QuestionLineEdit2.add_theme_color_override("font_color", Color.from_string("f6145eff", Color(1, 1, 1)))
 
 func _on_line_edit_text_changed(new_text: String) -> void:
 	line_edit_changed_function(new_text)
@@ -117,7 +125,7 @@ func get_random_number_and_perform_operation():
 
 func apply_vars_to_ui():
 	var label = $Question/Label
-	if is_ios_or_android:
+	if is_ios_or_android and get_viewport_rect().size.y > get_viewport_rect().size.x:
 		label = $Question2/Label
 	if operation == "addition":
 		label.text = str(num1) + " + " + str(num2) + " = "

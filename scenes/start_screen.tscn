@@ -97,6 +97,7 @@ horizontal_alignment = 1
 
 [node name="MobileAppText" type="CenterContainer" parent="."]
 visible = false
+layout_mode = 0
 offset_top = 432.0
 offset_right = 40.0
 offset_bottom = 472.0

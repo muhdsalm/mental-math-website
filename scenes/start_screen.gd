@@ -64,4 +64,7 @@ func _on_button_button_up() -> void:
 
 
 func _on_button_button_down() -> void:
-	$StartButton.scale = Vector2(1.1, 1.1)
+	if get_viewport_rect().size.y > get_viewport_rect().size.x:
+		$StartButton.scale = Vector2(1.1, 1.1)
+	else:
+		$StartButton.scale = Vector2(0.6, 0.6)
