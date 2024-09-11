@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1726071976|1266579114';
+const CACHE_VERSION = '1726072585|1875452430';
 /** @type {string} */
 const CACHE_PREFIX = 'Mental Math Webs-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
